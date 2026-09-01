@@ -9,9 +9,12 @@ dependencies = [
 ]
 
 [project.scripts]
-amp-model = "amp_model.train:main"
-amp-model = "amp_model.generate:main"
+amp-model_train = "amp_model.train:main"
+amp-model_generate = "amp_model.generate:main"
 
 [build-system]
 requires = ["uv_build>=0.11.7,<0.12.0"]
 build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""

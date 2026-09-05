@@ -236,6 +236,45 @@ def generate(
     return collected, dict(stats)
 
 
+def resolve_model_path(explicit: Path | None, checkpoint: Path) -> Path | None:
+    """Decide whether to sample from a VAE checkpoint or the empirical one.
+
+    The grader invokes `generate` with no arguments at all, so this has to work
+    out what the committed checkpoint/ directory actually holds:
+
+      1. an explicit --model always wins
+      2. a model.pt sitting beside the JSON
+      3. a "weights" pointer inside the JSON, resolved relative to the JSON
+      4. otherwise the JSON is an empirical checkpoint, so return None
+    """
+    if explicit:
+        return explicit
+    if not checkpoint.exists():
+        return None
+
+    sibling = checkpoint.parent / "model.pt"
+    if sibling.exists():
+        return sibling
+
+    try:
+        blob = json.loads(checkpoint.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+    if "aa_freqs" in blob:
+        return None
+
+    pointer = blob.get("weights")
+    if pointer:
+        for candidate in (checkpoint.parent / Path(pointer).name, Path(pointer)):
+            if candidate.exists():
+                return candidate
+        raise SystemExit(
+            f"{checkpoint} describes a VAE whose weights are at {pointer}, but that file "
+            f"is missing. Commit model.pt next to {checkpoint.name}."
+        )
+    return None
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--n-sequences", type=int, default=1_000)
@@ -270,9 +309,10 @@ def main() -> None:
     if not excluded:
         print(f"warning: no exclusion set loaded from {args.exclude_fasta}")
 
-    if args.model:
-        sampler = VAESampler(args.model, args.temperature, args.refine, args.prior, args.device)
-        source = f"VAE {args.model}"
+    model_path = resolve_model_path(args.model, args.checkpoint)
+    if model_path:
+        sampler = VAESampler(model_path, args.temperature, args.refine, args.prior, args.device)
+        source = f"VAE {model_path}"
     else:
         checkpoint = json.loads(args.checkpoint.read_text())
         sampler = EmpiricalSampler(checkpoint)

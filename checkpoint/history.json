@@ -1,0 +1,112 @@
+[
+  {
+    "epoch": 1,
+    "beta": 0.3973,
+    "train_recon": 48.433,
+    "train_kl": 14.681,
+    "val_recon": 49.183,
+    "val_kl": 6.883,
+    "val_accuracy": 0.2294,
+    "active_units": 32,
+    "seconds": 112.7
+  },
+  {
+    "epoch": 2,
+    "beta": 0.5,
+    "train_recon": 46.041,
+    "train_kl": 5.598,
+    "val_recon": 49.087,
+    "val_kl": 5.323,
+    "val_accuracy": 0.2408,
+    "active_units": 32,
+    "seconds": 113.5
+  },
+  {
+    "epoch": 3,
+    "beta": 0.1973,
+    "train_recon": 42.874,
+    "train_kl": 13.46,
+    "val_recon": 45.903,
+    "val_kl": 13.454,
+    "val_accuracy": 0.2653,
+    "active_units": 32,
+    "seconds": 113.6
+  },
+  {
+    "epoch": 4,
+    "beta": 0.5,
+    "train_recon": 41.248,
+    "train_kl": 8.804,
+    "val_recon": 46.538,
+    "val_kl": 6.986,
+    "val_accuracy": 0.2748,
+    "active_units": 32,
+    "seconds": 110.4
+  },
+  {
+    "epoch": 5,
+    "beta": 0.5,
+    "train_recon": 40.578,
+    "train_kl": 6.92,
+    "val_recon": 45.849,
+    "val_kl": 6.927,
+    "val_accuracy": 0.288,
+    "active_units": 32,
+    "seconds": 111.5
+  },
+  {
+    "epoch": 6,
+    "beta": 0.3973,
+    "train_recon": 37.316,
+    "train_kl": 16.209,
+    "val_recon": 44.238,
+    "val_kl": 9.338,
+    "val_accuracy": 0.3058,
+    "active_units": 32,
+    "seconds": 110.5
+  },
+  {
+    "epoch": 7,
+    "beta": 0.5,
+    "train_recon": 37.806,
+    "train_kl": 8.076,
+    "val_recon": 44.257,
+    "val_kl": 7.846,
+    "val_accuracy": 0.3122,
+    "active_units": 32,
+    "seconds": 112.1
+  },
+  {
+    "epoch": 8,
+    "beta": 0.1973,
+    "train_recon": 36.021,
+    "train_kl": 13.178,
+    "val_recon": 42.624,
+    "val_kl": 14.651,
+    "val_accuracy": 0.325,
+    "active_units": 32,
+    "seconds": 113.3
+  },
+  {
+    "epoch": 9,
+    "beta": 0.5,
+    "train_recon": 35.539,
+    "train_kl": 10.663,
+    "val_recon": 43.275,
+    "val_kl": 8.697,
+    "val_accuracy": 0.3221,
+    "active_units": 32,
+    "seconds": 112.1
+  },
+  {
+    "epoch": 10,
+    "beta": 0.5,
+    "train_recon": 36.032,
+    "train_kl": 8.485,
+    "val_recon": 43.345,
+    "val_kl": 8.546,
+    "val_accuracy": 0.3218,
+    "active_units": 32,
+    "seconds": 113.1
+  }
+]

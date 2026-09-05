@@ -1,14 +1,27 @@
-"""Generate 1,000 candidate AMPs from the empirical checkpoint produced by train.py.
+"""Generate candidate AMPs, either from the empirical checkpoint or from a trained VAE.
 
-Uses the same round-based loop as ampdiffusion-starter-kit's generate_library(): sample a batch,
-keep sequences that are unique and not already present in antibacterial.fasta, and if still short
-of the target, sample another batch with the next seed in sequence and repeat. Each round's seed
-is fully determined by the top-level --seed, so the loop is itself deterministic -- this is what
-lets the byte-identical rerun check pass without any special-casing.
+Keeps the round-based loop of the starter kit: sample a batch, keep sequences that are
+unique, not present in the exclusion set, and pass the quality filter; if still short of
+the target, advance the seed and sample again. Every round's seed is derived from the
+top-level --seed, so the whole loop stays deterministic and reruns byte-identical.
+
+Two changes from the starter kit worth knowing about:
+
+  * The exclusion set defaults to training.fasta rather than antibacterial.fasta. The
+    antibacterial set is entirely contained in training, so excluding against training
+    is a strict superset and needs one fewer input file.
+  * The accept predicate does more than deduplicate. The loop was already a rejection
+    sampler; it just had nothing to reject on. Low-complexity output is the failure mode
+    both the unigram and the VAE share, so it is filtered here.
+
+Determinism notes: numpy draws use a fresh default_rng(seed + round) each round, torch
+draws use a fresh manual_seed(seed + round) generator, and PYTHONHASHSEED does not enter
+into it because nothing here depends on set or dict iteration order for its output.
 """
 
 import argparse
 import json
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -17,6 +30,10 @@ MIN_LENGTH = 8
 MAX_LENGTH = 50
 BATCH_SIZE = 2_000
 
+
+# ---------------------------------------------------------------------------
+# Input and output
+# ---------------------------------------------------------------------------
 
 def _read_fasta_sequences(path: Path) -> list[str]:
     sequences: list[str] = []
@@ -42,67 +59,235 @@ def _write_fasta(sequences: list[str], path: Path) -> None:
             f.write(f">seq{i}\n{seq}\n")
 
 
-def _sample_batch(checkpoint: dict, batch_size: int, rng: np.random.Generator) -> list[str]:
-    aa_letters, aa_freqs = zip(*checkpoint["aa_freqs"].items())
-    aa_p = np.asarray(aa_freqs, dtype=float)
-    aa_p /= aa_p.sum()
+# ---------------------------------------------------------------------------
+# Quality filter
+# ---------------------------------------------------------------------------
 
-    lengths = [int(length) for length in checkpoint["length_probs"]]
-    length_p = np.asarray(list(checkpoint["length_probs"].values()), dtype=float)
-    length_p /= length_p.sum()
+def _longest_run(seq: str) -> int:
+    best = current = 1
+    for i in range(1, len(seq)):
+        if seq[i] == seq[i - 1]:
+            current += 1
+            best = max(best, current)
+        else:
+            current = 1
+    return best if seq else 0
 
-    sampled_lengths = rng.choice(lengths, size=batch_size, p=length_p)
-    sequences = []
-    for length in sampled_lengths:
-        length = int(np.clip(length, MIN_LENGTH, MAX_LENGTH))
-        sequences.append("".join(rng.choice(aa_letters, size=length, p=aa_p)))
-    return sequences
 
+def make_filter(max_run: int, max_residue_frac: float, min_charge: float | None):
+    """Return an accept predicate. Charge is only computed when it is actually used."""
+
+    def accept(seq: str) -> bool:
+        if not MIN_LENGTH <= len(seq) <= MAX_LENGTH:
+            return False
+        if max_run and _longest_run(seq) > max_run:
+            return False
+        if max_residue_frac and max(Counter(seq).values()) / len(seq) > max_residue_frac:
+            return False
+        if min_charge is not None:
+            positive = seq.count("K") + seq.count("R") + 0.1 * seq.count("H")
+            if positive - seq.count("D") - seq.count("E") < min_charge:
+                return False
+        return True
+
+    return accept
+
+
+# ---------------------------------------------------------------------------
+# Samplers
+# ---------------------------------------------------------------------------
+
+class EmpiricalSampler:
+    """The starter kit baseline: independent residues, empirical length distribution."""
+
+    def __init__(self, checkpoint: dict):
+        letters, freqs = zip(*checkpoint["aa_freqs"].items())
+        self.letters = np.asarray(letters)
+        self.aa_p = np.asarray(freqs, dtype=float)
+        self.aa_p /= self.aa_p.sum()
+
+        lengths, probs = zip(*checkpoint["length_probs"].items())
+        self.lengths = np.asarray([int(length) for length in lengths])
+        self.length_p = np.asarray(probs, dtype=float)
+        self.length_p /= self.length_p.sum()
+
+    def batch(self, batch_size: int, seed: int) -> list[str]:
+        rng = np.random.default_rng(seed)
+        sampled = np.clip(rng.choice(self.lengths, size=batch_size, p=self.length_p),
+                          MIN_LENGTH, MAX_LENGTH)
+        # One vectorised draw for every residue in the batch, then split by length.
+        total = int(sampled.sum())
+        residues = rng.choice(self.letters, size=total, p=self.aa_p)
+        sequences = []
+        cursor = 0
+        for length in sampled:
+            sequences.append("".join(residues[cursor:cursor + length]))
+            cursor += length
+        return sequences
+
+
+class VAESampler:
+    """Samples from a trained conditional VAE checkpoint."""
+
+    def __init__(self, checkpoint_path: Path, temperature: float, refine: int,
+                 prior: str, device: str = "cpu"):
+        import torch
+
+        from . import peptide_data as pdata
+        from .peptide_vae import draw_latents, load_model, sample_tokens
+
+        self.torch = torch
+        self.pdata = pdata
+        self.draw_latents = draw_latents
+        self.sample_tokens = sample_tokens
+
+        self.device = torch.device(device)
+        self.model, self.blob = load_model(str(checkpoint_path), self.device)
+        self.temperature = temperature
+        self.refine = refine
+        self.prior = prior
+        self.stats = self.blob["property_stats"]
+        self.empirical_lengths = self.blob["empirical"]["lengths"]
+        self.empirical_properties = self.blob["empirical"]["properties"]
+
+    def batch(self, batch_size: int, seed: int) -> list[str]:
+        torch = self.torch
+        torch.manual_seed(seed)
+
+        # Draw (length, property) pairs jointly from real training rows so the
+        # correlations between them survive.
+        rng = np.random.default_rng(seed)
+        picks = rng.integers(0, len(self.empirical_lengths), size=batch_size)
+        lengths_list = [self.empirical_lengths[i] for i in picks]
+        properties_list = [self.empirical_properties[i] for i in picks]
+
+        lengths = torch.tensor(lengths_list, dtype=torch.long, device=self.device)
+        properties = torch.tensor(
+            self.pdata.standardise(properties_list, self.stats),
+            dtype=torch.float32, device=self.device,
+        )
+        z = self.draw_latents(self.blob, batch_size, self.device, self.prior)
+
+        sequences = []
+        with torch.no_grad():
+            for start in range(0, batch_size, 512):
+                end = min(start + 512, batch_size)
+                batch_lengths = lengths[start:end]
+                batch_properties = properties[start:end]
+
+                condition = self.model.conditioner(batch_lengths, batch_properties)
+                mask = self.model.make_mask(batch_lengths)
+                tokens = self.sample_tokens(self.model, z[start:end], condition, mask,
+                                            self.temperature)
+                for _ in range(self.refine):
+                    mu, _, condition, mask = self.model.encode(tokens, batch_lengths,
+                                                               batch_properties)
+                    tokens = self.sample_tokens(self.model, mu, condition, mask,
+                                                self.temperature)
+
+                for row, length in zip(tokens.cpu().tolist(), batch_lengths.cpu().tolist()):
+                    sequences.append(self.pdata.decode(row[:length]))
+        return sequences
+
+
+# ---------------------------------------------------------------------------
+# Generation loop
+# ---------------------------------------------------------------------------
 
 def generate(
     n_sequences: int,
-    checkpoint: dict,
-    antibacterial_sequences: set[str],
+    sampler,
+    excluded: set[str],
+    accept,
     *,
     seed: int = 42,
     batch_size: int = BATCH_SIZE,
-) -> list[str]:
+    max_rounds: int = 200,
+) -> tuple[list[str], dict]:
     collected: list[str] = []
     seen: set[str] = set()
+    stats = Counter()
     round_idx = 0
+
     while len(collected) < n_sequences:
-        rng = np.random.default_rng(seed + round_idx)
-        for seq in _sample_batch(checkpoint, batch_size, rng):
+        if round_idx >= max_rounds:
+            raise SystemExit(
+                f"stopped after {max_rounds} rounds with {len(collected)} of {n_sequences} "
+                f"sequences. Rejections so far: {dict(stats)}. Loosen the filter or raise "
+                f"the temperature."
+            )
+        for seq in sampler.batch(batch_size, seed + round_idx):
             if len(collected) >= n_sequences:
                 break
-            if seq in seen or seq in antibacterial_sequences:
+            if seq in seen:
+                stats["duplicate_of_generated"] += 1
+                continue
+            if seq in excluded:
+                stats["present_in_training"] += 1
+                continue
+            if not accept(seq):
+                stats["failed_filter"] += 1
                 continue
             seen.add(seq)
             collected.append(seq)
         round_idx += 1
-    return collected
+
+    stats["rounds"] = round_idx
+    return collected, dict(stats)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--n-sequences", type=int, default=1_000)
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--checkpoint", type=Path, default=Path("checkpoint/model.json"))
-    parser.add_argument("--antibacterial-fasta", type=Path, default=Path("data/antibacterial.fasta"))
+    parser.add_argument("--checkpoint", type=Path, default=Path("checkpoint/model.json"),
+                        help="empirical checkpoint, used when --model is not given")
+    parser.add_argument("--model", type=Path, default=None,
+                        help="trained VAE checkpoint (.pt); overrides --checkpoint")
+    parser.add_argument("--exclude-fasta", type=Path,
+                        default=Path("data/training/training.fasta"),
+                        help="sequences never to emit (default: the training set)")
+    parser.add_argument("--out", type=Path, default=Path("generate/library.fasta"))
+    parser.add_argument("--batch-size", type=int, default=BATCH_SIZE)
+    parser.add_argument("--temperature", type=float, default=0.9)
+    parser.add_argument("--refine", type=int, default=1)
+    parser.add_argument("--prior", choices=["fitted", "normal"], default="fitted")
+    parser.add_argument("--max-run", type=int, default=5,
+                        help="reject homopolymer runs longer than this (0 disables)")
+    parser.add_argument("--max-residue-frac", type=float, default=0.5,
+                        help="reject sequences more than this fraction of one residue")
+    parser.add_argument("--min-charge", type=float, default=None,
+                        help="reject below this crude net charge (off by default, since "
+                             "it distorts the charge distribution)")
+    parser.add_argument("--device", default="cpu")
     args = parser.parse_args()
 
-    checkpoint = json.loads(args.checkpoint.read_text())
-    antibacterial_sequences = (
-        set(_read_fasta_sequences(args.antibacterial_fasta)) if args.antibacterial_fasta.exists() else set()
+    excluded = (
+        set(_read_fasta_sequences(args.exclude_fasta))
+        if args.exclude_fasta and args.exclude_fasta.exists()
+        else set()
+    )
+    if not excluded:
+        print(f"warning: no exclusion set loaded from {args.exclude_fasta}")
+
+    if args.model:
+        sampler = VAESampler(args.model, args.temperature, args.refine, args.prior, args.device)
+        source = f"VAE {args.model}"
+    else:
+        checkpoint = json.loads(args.checkpoint.read_text())
+        sampler = EmpiricalSampler(checkpoint)
+        source = f"empirical {args.checkpoint}"
+
+    accept = make_filter(args.max_run, args.max_residue_frac, args.min_charge)
+    sequences, stats = generate(
+        args.n_sequences, sampler, excluded, accept,
+        seed=args.seed, batch_size=args.batch_size,
     )
 
-    sequences = generate(args.n_sequences, checkpoint, antibacterial_sequences, seed=args.seed)
-
-    out_dir = Path("generate")
-    out_dir.mkdir(parents=True, exist_ok=True)
-    library_path = out_dir / "library.fasta"
-    _write_fasta(sequences, library_path)
-    print(f"Generated {len(sequences)} sequences -> {library_path}")
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    _write_fasta(sequences, args.out)
+    print(f"Generated {len(sequences)} sequences from {source} -> {args.out}")
+    print(f"  rejected: {stats}")
 
 
 if __name__ == "__main__":

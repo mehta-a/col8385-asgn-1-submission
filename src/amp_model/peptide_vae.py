@@ -285,7 +285,13 @@ def train(args):
             mu, logvar, _, _ = model.encode(val_tokens[:2048], val_lengths[:2048],
                                             val_properties[:2048])
             per_dimension = (0.5 * (mu.pow(2) + logvar.exp() - logvar - 1.0)).mean(0)
-            active_units = int((per_dimension > 0.02).sum().item())
+            # The free-bits floor forces every dimension to at least
+            # args.free_bits nats, so a threshold below the floor would count
+            # all of them regardless of what the model learned. Count only the
+            # dimensions carrying meaningfully more than the floor.
+            threshold = max(0.02, args.free_bits * 2.0)
+            active_units = int((per_dimension > threshold).sum().item())
+            kl_top = float(per_dimension.max().item())
 
         record = {
             "epoch": epoch,
@@ -296,6 +302,7 @@ def train(args):
             "val_kl": round(val_kl, 3),
             "val_accuracy": round(val_accuracy, 4),
             "active_units": active_units,
+            "kl_top_dim": round(kl_top, 4),
             "seconds": round(time.time() - started, 1),
         }
         history.append(record)

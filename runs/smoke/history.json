@@ -1,0 +1,14 @@
+[
+  {
+    "epoch": 1,
+    "beta": 0.5,
+    "train_recon": 50.214,
+    "train_kl": 5.997,
+    "val_recon": 50.39,
+    "val_kl": 4.78,
+    "val_accuracy": 0.2291,
+    "active_units": 0,
+    "kl_top_dim": 0.1855,
+    "seconds": 112.7
+  }
+]

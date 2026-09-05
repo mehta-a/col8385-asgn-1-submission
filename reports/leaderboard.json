@@ -1,13 +1,40 @@
 {
+  "mine_v1": {
+    "aggregate_score": 0.6383921064074459,
+    "components": {
+      "Diversity (5)": 0.8607316097043836,
+      "Novelty": 1.0,
+      "FKEA": 0.7310585786300049,
+      "FBD (generic)": 0.2403038725433717,
+      "FBD (AMPs)": 0.5010668506375747,
+      "Activity": 0.7310585786300049,
+      "Authenticity": 0.879,
+      "Conformity score": 0.4756479201331115,
+      "FBD margin": 0.7604743131887671
+    },
+    "raw": {
+      "Count": 1000.0,
+      "Uniqueness": 1.0,
+      "Diversity (5)": 0.8607316097043836,
+      "Novelty": 1.0,
+      "FKEA": 755.0319213867188,
+      "FBD (generic)": 3.161397772811643,
+      "FBD (AMPs)": 0.9957416834252069,
+      "Activity": 0.5785283209325396,
+      "Authenticity": 0.879,
+      "Conformity score": 0.4756479201331115,
+      "FBD margin": 0.7604743131887671
+    }
+  },
   "submission": {
-    "aggregate_score": 0.5250071524734277,
+    "aggregate_score": 0.457423044804413,
     "components": {
       "Diversity (5)": 0.8471896808042475,
       "Novelty": 1.0,
-      "FKEA": 0.5,
+      "FKEA": 0.2689414213699951,
       "FBD (generic)": 0.545711845115916,
       "FBD (AMPs)": 0.25889117124007194,
-      "Activity": 0.5,
+      "Activity": 0.2689414213699951,
       "Authenticity": 0.739,
       "Conformity score": 0.6082735440931781,
       "FBD margin": 0.2252902140915343

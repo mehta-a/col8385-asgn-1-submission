@@ -1,0 +1,122 @@
+[
+  {
+    "epoch": 1,
+    "beta": 0.1192,
+    "train_recon": 46.705,
+    "train_kl": 32.742,
+    "val_recon": 46.865,
+    "val_kl": 18.576,
+    "val_accuracy": 0.2378,
+    "active_units": 31,
+    "kl_top_dim": 1.1286,
+    "seconds": 104.1
+  },
+  {
+    "epoch": 2,
+    "beta": 0.15,
+    "train_recon": 42.654,
+    "train_kl": 16.982,
+    "val_recon": 45.665,
+    "val_kl": 16.601,
+    "val_accuracy": 0.2571,
+    "active_units": 24,
+    "kl_top_dim": 1.1233,
+    "seconds": 106.9
+  },
+  {
+    "epoch": 3,
+    "beta": 0.0592,
+    "train_recon": 38.954,
+    "train_kl": 31.247,
+    "val_recon": 42.581,
+    "val_kl": 31.423,
+    "val_accuracy": 0.3067,
+    "active_units": 30,
+    "kl_top_dim": 1.8091,
+    "seconds": 107.0
+  },
+  {
+    "epoch": 4,
+    "beta": 0.15,
+    "train_recon": 35.938,
+    "train_kl": 25.482,
+    "val_recon": 40.794,
+    "val_kl": 23.095,
+    "val_accuracy": 0.3407,
+    "active_units": 25,
+    "kl_top_dim": 1.2821,
+    "seconds": 108.6
+  },
+  {
+    "epoch": 5,
+    "beta": 0.15,
+    "train_recon": 33.985,
+    "train_kl": 23.676,
+    "val_recon": 39.341,
+    "val_kl": 24.696,
+    "val_accuracy": 0.3648,
+    "active_units": 25,
+    "kl_top_dim": 1.3106,
+    "seconds": 105.9
+  },
+  {
+    "epoch": 6,
+    "beta": 0.1192,
+    "train_recon": 30.777,
+    "train_kl": 41.231,
+    "val_recon": 37.322,
+    "val_kl": 29.646,
+    "val_accuracy": 0.3969,
+    "active_units": 28,
+    "kl_top_dim": 1.5067,
+    "seconds": 106.3
+  },
+  {
+    "epoch": 7,
+    "beta": 0.15,
+    "train_recon": 30.0,
+    "train_kl": 27.78,
+    "val_recon": 36.653,
+    "val_kl": 27.559,
+    "val_accuracy": 0.4105,
+    "active_units": 27,
+    "kl_top_dim": 1.438,
+    "seconds": 107.8
+  },
+  {
+    "epoch": 8,
+    "beta": 0.0592,
+    "train_recon": 28.253,
+    "train_kl": 38.489,
+    "val_recon": 35.682,
+    "val_kl": 39.864,
+    "val_accuracy": 0.4258,
+    "active_units": 29,
+    "kl_top_dim": 1.8992,
+    "seconds": 107.0
+  },
+  {
+    "epoch": 9,
+    "beta": 0.15,
+    "train_recon": 27.602,
+    "train_kl": 32.808,
+    "val_recon": 35.54,
+    "val_kl": 29.339,
+    "val_accuracy": 0.4291,
+    "active_units": 28,
+    "kl_top_dim": 1.4175,
+    "seconds": 109.2
+  },
+  {
+    "epoch": 10,
+    "beta": 0.15,
+    "train_recon": 27.66,
+    "train_kl": 29.024,
+    "val_recon": 35.528,
+    "val_kl": 29.403,
+    "val_accuracy": 0.4291,
+    "active_units": 28,
+    "kl_top_dim": 1.4291,
+    "seconds": 110.0
+  }
+]

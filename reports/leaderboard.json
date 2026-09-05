@@ -1,0 +1,29 @@
+{
+  "submission": {
+    "aggregate_score": 0.5250071524734277,
+    "components": {
+      "Diversity (5)": 0.8471896808042475,
+      "Novelty": 1.0,
+      "FKEA": 0.5,
+      "FBD (generic)": 0.545711845115916,
+      "FBD (AMPs)": 0.25889117124007194,
+      "Activity": 0.5,
+      "Authenticity": 0.739,
+      "Conformity score": 0.6082735440931781,
+      "FBD margin": 0.2252902140915343
+    },
+    "raw": {
+      "Count": 1000.0,
+      "Uniqueness": 1.0,
+      "Diversity (5)": 0.8471896808042475,
+      "Novelty": 1.0,
+      "FKEA": 171.85191345214844,
+      "FBD (generic)": 0.8324689283363229,
+      "FBD (AMPs)": 2.862626891485194,
+      "Activity": 0.5131839138465701,
+      "Authenticity": 0.739,
+      "Conformity score": 0.6082735440931781,
+      "FBD margin": 0.2252902140915343
+    }
+  }
+}

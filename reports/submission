@@ -1,0 +1,65 @@
+{
+  "url": "https://github.com/2023col761/dummy-submission.git",
+  "branch": null,
+  "commit": "459afc2dbe2937495fe03a01b1b7f090da0e3640",
+  "trained_from_scratch": true,
+  "train_seconds": 0.26524223387241364,
+  "checks_passed": true,
+  "n_sequences": 1000,
+  "metrics": {
+    "values": {
+      "Count": {
+        "value": 1000.0,
+        "deviation": null
+      },
+      "Uniqueness": {
+        "value": 1.0,
+        "deviation": null
+      },
+      "Diversity (5)": {
+        "value": 0.8471896808042475,
+        "deviation": null
+      },
+      "Novelty": {
+        "value": 1.0,
+        "deviation": null
+      },
+      "FKEA": {
+        "value": 171.85191345214844,
+        "deviation": null
+      },
+      "FBD (generic)": {
+        "value": 0.8324689283363229,
+        "deviation": null
+      },
+      "FBD (AMPs)": {
+        "value": 2.862626891485194,
+        "deviation": null
+      },
+      "Activity": {
+        "value": 0.5131839138465701,
+        "deviation": 0.005170032513775831
+      },
+      "Authenticity": {
+        "value": 0.739,
+        "deviation": null
+      },
+      "Conformity score": {
+        "value": 0.6082735440931781,
+        "deviation": 0.0017619707828101547
+      }
+    },
+    "objective": {
+      "Count": "maximize",
+      "Uniqueness": "maximize",
+      "Diversity (5)": "maximize",
+      "Novelty": "maximize",
+      "FKEA": "maximize",
+      "FBD (generic)": "minimize",
+      "FBD (AMPs)": "minimize",
+      "Activity": "maximize",
+      "Authenticity": "maximize",
+      "Conformity score": "maximize"
+    }
+  }
+}

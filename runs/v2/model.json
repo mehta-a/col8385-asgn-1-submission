@@ -1,0 +1,24 @@
+{
+  "model": "conditional-peptide-vae",
+  "weights": "runs/v2/model.pt",
+  "config": {
+    "dim": 256,
+    "latent": 32,
+    "layers": 4,
+    "max_len": 50
+  },
+  "training_sequences": 38376,
+  "best_val_objective": 71.4601,
+  "final_epoch": {
+    "epoch": 125,
+    "beta": 0.15,
+    "train_recon": 5.702,
+    "train_kl": 45.68,
+    "val_recon": 41.797,
+    "val_kl": 48.55,
+    "val_accuracy": 0.5841,
+    "active_units": 32,
+    "kl_top_dim": 2.1235,
+    "seconds": 79.3
+  }
+}

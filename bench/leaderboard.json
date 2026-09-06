@@ -1,0 +1,476 @@
+{
+  "generated": "2026-09-06T09:26:52",
+  "grader": "/DATATWO/users/anjali2/ankita/col8385/amp-grader-demo",
+  "profile": "grader",
+  "seeds": [
+    42,
+    43
+  ],
+  "n_sequences": 1000,
+  "components": [
+    "Diversity (5)",
+    "Novelty",
+    "FKEA",
+    "FBD (generic)",
+    "FBD (AMPs)",
+    "Activity",
+    "Authenticity",
+    "Conformity score",
+    "FBD margin"
+  ],
+  "objectives": {
+    "Count": "maximize",
+    "Uniqueness": "maximize",
+    "Diversity (5)": "maximize",
+    "Novelty": "maximize",
+    "FKEA": "maximize",
+    "FBD (generic)": "minimize",
+    "FBD (AMPs)": "minimize",
+    "Activity": "maximize",
+    "Authenticity": "maximize",
+    "Conformity score": "maximize",
+    "FBD margin": "maximize"
+  },
+  "entries": {
+    "snapshot-e025_seed42": {
+      "model": "snapshot-e025",
+      "checkpoint": "/DATATWO/users/anjali2/ankita/col8385/dummy-submission/runs/v2/snapshot-e025.pt",
+      "checkpoint_md5": "4806ff28fb250af9a7a8733276ccc85b",
+      "epochs": 25,
+      "seed": 42,
+      "library": "bench/snapshot-e025_seed42.fasta",
+      "metrics_file": "bench/snapshot-e025_seed42.metrics.json",
+      "raw": {
+        "Count": 1000.0,
+        "Uniqueness": 1.0,
+        "Diversity (5)": 0.8678902549506077,
+        "Novelty": 1.0,
+        "FKEA": 743.8992309570312,
+        "FBD (generic)": 3.210828513713853,
+        "FBD (AMPs)": 0.8089516288743201,
+        "Activity": 0.5827114325778389,
+        "Authenticity": 0.871,
+        "Conformity score": 0.46750915141430954,
+        "FBD margin": 0.7987572453767412
+      },
+      "components": {
+        "Diversity (5)": 0.8678902549506077,
+        "Novelty": 1.0,
+        "FKEA": 0.4693502397575639,
+        "FBD (generic)": 0.23748295537165517,
+        "FBD (AMPs)": 0.5528063791414274,
+        "Activity": 0.7938446905207668,
+        "Authenticity": 0.871,
+        "Conformity score": 0.46750915141430954,
+        "FBD margin": 0.7987572453767412
+      },
+      "aggregate_score": 0.6213657776654508
+    },
+    "snapshot-e025_seed43": {
+      "model": "snapshot-e025",
+      "checkpoint": "/DATATWO/users/anjali2/ankita/col8385/dummy-submission/runs/v2/snapshot-e025.pt",
+      "checkpoint_md5": "4806ff28fb250af9a7a8733276ccc85b",
+      "epochs": 25,
+      "seed": 43,
+      "library": "bench/snapshot-e025_seed43.fasta",
+      "metrics_file": "bench/snapshot-e025_seed43.metrics.json",
+      "raw": {
+        "Count": 1000.0,
+        "Uniqueness": 1.0,
+        "Diversity (5)": 0.8687877462013934,
+        "Novelty": 1.0,
+        "FKEA": 752.8866577148438,
+        "FBD (generic)": 3.2993991351451513,
+        "FBD (AMPs)": 0.8167682276436423,
+        "Activity": 0.583194900030525,
+        "Authenticity": 0.873,
+        "Conformity score": 0.47195840266222955,
+        "FBD margin": 0.8015706953445488
+      },
+      "components": {
+        "Diversity (5)": 0.8687877462013934,
+        "Novelty": 1.0,
+        "FKEA": 0.7618475338328997,
+        "FBD (generic)": 0.23259064082363667,
+        "FBD (AMPs)": 0.5504279438533582,
+        "Activity": 0.8080222492146337,
+        "Authenticity": 0.873,
+        "Conformity score": 0.47195840266222955,
+        "FBD margin": 0.8015706953445488
+      },
+      "aggregate_score": 0.6563732027245303
+    },
+    "snapshot-e050_seed42": {
+      "model": "snapshot-e050",
+      "checkpoint": "/DATATWO/users/anjali2/ankita/col8385/dummy-submission/runs/v2/snapshot-e050.pt",
+      "checkpoint_md5": "15452826c897072a48276a8d1a31cb0b",
+      "epochs": 50,
+      "seed": 42,
+      "library": "bench/snapshot-e050_seed42.fasta",
+      "metrics_file": "bench/snapshot-e050_seed42.metrics.json",
+      "raw": {
+        "Count": 1000.0,
+        "Uniqueness": 1.0,
+        "Diversity (5)": 0.865002954128076,
+        "Novelty": 1.0,
+        "FKEA": 741.0418090820312,
+        "FBD (generic)": 2.886047645135873,
+        "FBD (AMPs)": 0.7598703899195147,
+        "Activity": 0.5856450274725274,
+        "Authenticity": 0.868,
+        "Conformity score": 0.495581697171381,
+        "FBD margin": 0.7915832493727548
+      },
+      "components": {
+        "Diversity (5)": 0.865002954128076,
+        "Novelty": 1.0,
+        "FKEA": 0.3701701143317014,
+        "FBD (generic)": 0.25733086449716847,
+        "FBD (AMPs)": 0.5682236633606488,
+        "Activity": 0.8685277270268336,
+        "Authenticity": 0.868,
+        "Conformity score": 0.495581697171381,
+        "FBD margin": 0.7915832493727548
+      },
+      "aggregate_score": 0.6215596633814977
+    },
+    "snapshot-e050_seed43": {
+      "model": "snapshot-e050",
+      "checkpoint": "/DATATWO/users/anjali2/ankita/col8385/dummy-submission/runs/v2/snapshot-e050.pt",
+      "checkpoint_md5": "15452826c897072a48276a8d1a31cb0b",
+      "epochs": 50,
+      "seed": 43,
+      "library": "bench/snapshot-e050_seed43.fasta",
+      "metrics_file": "bench/snapshot-e050_seed43.metrics.json",
+      "raw": {
+        "Count": 1000.0,
+        "Uniqueness": 1.0,
+        "Diversity (5)": 0.8678746821004484,
+        "Novelty": 1.0,
+        "FKEA": 750.9791870117188,
+        "FBD (generic)": 3.120724382073922,
+        "FBD (AMPs)": 0.738265946114602,
+        "Activity": 0.5853895436507938,
+        "Authenticity": 0.865,
+        "Conformity score": 0.4884695507487521,
+        "FBD margin": 0.8086893504962069
+      },
+      "components": {
+        "Diversity (5)": 0.8678746821004484,
+        "Novelty": 1.0,
+        "FKEA": 0.7088870916498178,
+        "FBD (generic)": 0.24267577913005417,
+        "FBD (AMPs)": 0.5752859637129836,
+        "Activity": 0.8630666539117391,
+        "Authenticity": 0.865,
+        "Conformity score": 0.4884695507487521,
+        "FBD margin": 0.8086893504962069
+      },
+      "aggregate_score": 0.6646987848180396
+    },
+    "snapshot-e075_seed42": {
+      "model": "snapshot-e075",
+      "checkpoint": "/DATATWO/users/anjali2/ankita/col8385/dummy-submission/runs/v2/snapshot-e075.pt",
+      "checkpoint_md5": "9164f565b61967c49f7fdbee85399ccf",
+      "epochs": 75,
+      "seed": 42,
+      "library": "bench/snapshot-e075_seed42.fasta",
+      "metrics_file": "bench/snapshot-e075_seed42.metrics.json",
+      "raw": {
+        "Count": 1000.0,
+        "Uniqueness": 1.0,
+        "Diversity (5)": 0.8650291595104774,
+        "Novelty": 1.0,
+        "FKEA": 735.7778930664062,
+        "FBD (generic)": 2.843552590922471,
+        "FBD (AMPs)": 0.7583138606759334,
+        "Activity": 0.5730807390873016,
+        "Authenticity": 0.874,
+        "Conformity score": 0.48562163061564056,
+        "FBD margin": 0.7894664139089844
+      },
+      "components": {
+        "Diversity (5)": 0.8650291595104774,
+        "Novelty": 1.0,
+        "FKEA": 0.21679312179987584,
+        "FBD (generic)": 0.2601759638626397,
+        "FBD (AMPs)": 0.5687266775088599,
+        "Activity": 0.3956385145625978,
+        "Authenticity": 0.874,
+        "Conformity score": 0.48562163061564056,
+        "FBD margin": 0.7894664139089844
+      },
+      "aggregate_score": 0.5364397682545581
+    },
+    "snapshot-e075_seed43": {
+      "model": "snapshot-e075",
+      "checkpoint": "/DATATWO/users/anjali2/ankita/col8385/dummy-submission/runs/v2/snapshot-e075.pt",
+      "checkpoint_md5": "9164f565b61967c49f7fdbee85399ccf",
+      "epochs": 75,
+      "seed": 43,
+      "library": "bench/snapshot-e075_seed43.fasta",
+      "metrics_file": "bench/snapshot-e075_seed43.metrics.json",
+      "raw": {
+        "Count": 1000.0,
+        "Uniqueness": 1.0,
+        "Diversity (5)": 0.8702825331471226,
+        "Novelty": 1.0,
+        "FKEA": 745.6155395507812,
+        "FBD (generic)": 2.9329429493927854,
+        "FBD (AMPs)": 0.8075778849885111,
+        "Activity": 0.5667653943452381,
+        "Authenticity": 0.871,
+        "Conformity score": 0.48028319467554076,
+        "FBD margin": 0.7841001505550793
+      },
+      "components": {
+        "Diversity (5)": 0.8702825331471226,
+        "Novelty": 1.0,
+        "FKEA": 0.5306497602424362,
+        "FBD (generic)": 0.25426252373032565,
+        "FBD (AMPs)": 0.5532265073083453,
+        "Activity": 0.17000136507482938,
+        "Authenticity": 0.871,
+        "Conformity score": 0.48028319467554076,
+        "FBD margin": 0.7841001505550793
+      },
+      "aggregate_score": 0.5355216181000186
+    },
+    "snapshot-e100_seed42": {
+      "model": "snapshot-e100",
+      "checkpoint": "/DATATWO/users/anjali2/ankita/col8385/dummy-submission/runs/v2/snapshot-e100.pt",
+      "checkpoint_md5": "b0e86d1ed262408db1b2b575d0a9910c",
+      "epochs": 100,
+      "seed": 42,
+      "library": "bench/snapshot-e100_seed42.fasta",
+      "metrics_file": "bench/snapshot-e100_seed42.metrics.json",
+      "raw": {
+        "Count": 1000.0,
+        "Uniqueness": 1.0,
+        "Diversity (5)": 0.8660411598455486,
+        "Novelty": 1.0,
+        "FKEA": 740.1314086914062,
+        "FBD (generic)": 2.9612823243256923,
+        "FBD (AMPs)": 0.7148550210994493,
+        "Activity": 0.5742340010683761,
+        "Authenticity": 0.862,
+        "Conformity score": 0.47655540765391013,
+        "FBD margin": 0.8055418081728998
+      },
+      "components": {
+        "Diversity (5)": 0.8660411598455486,
+        "Novelty": 1.0,
+        "FKEA": 0.34035480769814286,
+        "FBD (generic)": 0.2524435064522256,
+        "FBD (AMPs)": 0.5831396751889075,
+        "Activity": 0.447324813156704,
+        "Authenticity": 0.862,
+        "Conformity score": 0.47655540765391013,
+        "FBD margin": 0.8055418081728998
+      },
+      "aggregate_score": 0.5707099443178448
+    },
+    "snapshot-e100_seed43": {
+      "model": "snapshot-e100",
+      "checkpoint": "/DATATWO/users/anjali2/ankita/col8385/dummy-submission/runs/v2/snapshot-e100.pt",
+      "checkpoint_md5": "b0e86d1ed262408db1b2b575d0a9910c",
+      "epochs": 100,
+      "seed": 43,
+      "library": "bench/snapshot-e100_seed43.fasta",
+      "metrics_file": "bench/snapshot-e100_seed43.metrics.json",
+      "raw": {
+        "Count": 1000.0,
+        "Uniqueness": 1.0,
+        "Diversity (5)": 0.8709242381629141,
+        "Novelty": 1.0,
+        "FKEA": 754.4341430664062,
+        "FBD (generic)": 3.203722470554542,
+        "FBD (AMPs)": 0.8485368628770935,
+        "Activity": 0.5718411433531746,
+        "Authenticity": 0.871,
+        "Conformity score": 0.4647923460898502,
+        "FBD margin": 0.7906015402625985
+      },
+      "components": {
+        "Diversity (5)": 0.8709242381629141,
+        "Novelty": 1.0,
+        "FKEA": 0.7996634555281436,
+        "FBD (generic)": 0.23788440055322757,
+        "FBD (AMPs)": 0.5409683842839809,
+        "Activity": 0.34259709445116865,
+        "Authenticity": 0.871,
+        "Conformity score": 0.4647923460898502,
+        "FBD margin": 0.7906015402625985
+      },
+      "aggregate_score": 0.5983264670587651
+    },
+    "snapshot-e125_seed42": {
+      "model": "snapshot-e125",
+      "checkpoint": "/DATATWO/users/anjali2/ankita/col8385/dummy-submission/runs/v2/snapshot-e125.pt",
+      "checkpoint_md5": "748c243fb68ed471933e3bcc88734e04",
+      "epochs": 125,
+      "seed": 42,
+      "library": "bench/snapshot-e125_seed42.fasta",
+      "metrics_file": "bench/snapshot-e125_seed42.metrics.json",
+      "raw": {
+        "Count": 1000.0,
+        "Uniqueness": 1.0,
+        "Diversity (5)": 0.8689011243464684,
+        "Novelty": 1.0,
+        "FKEA": 736.9973754882812,
+        "FBD (generic)": 2.928803295874527,
+        "FBD (AMPs)": 0.6688338703993217,
+        "Activity": 0.576532909416972,
+        "Authenticity": 0.871,
+        "Conformity score": 0.46737371048252907,
+        "FBD margin": 0.814090793627183
+      },
+      "components": {
+        "Diversity (5)": 0.8689011243464684,
+        "Novelty": 1.0,
+        "FKEA": 0.24786810526689582,
+        "FBD (generic)": 0.25453043196386504,
+        "FBD (AMPs)": 0.5992208198415329,
+        "Activity": 0.552675186843301,
+        "Authenticity": 0.871,
+        "Conformity score": 0.46737371048252907,
+        "FBD margin": 0.814090793627183
+      },
+      "aggregate_score": 0.5665787968194491
+    },
+    "snapshot-e125_seed43": {
+      "model": "snapshot-e125",
+      "checkpoint": "/DATATWO/users/anjali2/ankita/col8385/dummy-submission/runs/v2/snapshot-e125.pt",
+      "checkpoint_md5": "748c243fb68ed471933e3bcc88734e04",
+      "epochs": 125,
+      "seed": 43,
+      "library": "bench/snapshot-e125_seed43.fasta",
+      "metrics_file": "bench/snapshot-e125_seed43.metrics.json",
+      "raw": {
+        "Count": 1000.0,
+        "Uniqueness": 1.0,
+        "Diversity (5)": 0.8708717596074532,
+        "Novelty": 1.0,
+        "FKEA": 754.4039306640625,
+        "FBD (generic)": 3.179832087670615,
+        "FBD (AMPs)": 0.8091919179048261,
+        "Activity": 0.5733616294642857,
+        "Authenticity": 0.867,
+        "Conformity score": 0.47356306156405986,
+        "FBD margin": 0.7971453877505319
+      },
+      "components": {
+        "Diversity (5)": 0.8708717596074532,
+        "Novelty": 1.0,
+        "FKEA": 0.7989702191267383,
+        "FBD (generic)": 0.2392440602936496,
+        "FBD (AMPs)": 0.5527329577937048,
+        "Activity": 0.4080599735732236,
+        "Authenticity": 0.867,
+        "Conformity score": 0.47356306156405986,
+        "FBD margin": 0.7971453877505319
+      },
+      "aggregate_score": 0.6133695291487966
+    }
+  },
+  "ranking": [
+    [
+      "snapshot-e050_seed43",
+      0.6646987848180396
+    ],
+    [
+      "snapshot-e025_seed43",
+      0.6563732027245303
+    ],
+    [
+      "snapshot-e050_seed42",
+      0.6215596633814977
+    ],
+    [
+      "snapshot-e025_seed42",
+      0.6213657776654508
+    ],
+    [
+      "snapshot-e125_seed43",
+      0.6133695291487966
+    ],
+    [
+      "snapshot-e100_seed43",
+      0.5983264670587651
+    ],
+    [
+      "snapshot-e100_seed42",
+      0.5707099443178448
+    ],
+    [
+      "snapshot-e125_seed42",
+      0.5665787968194491
+    ],
+    [
+      "snapshot-e075_seed42",
+      0.5364397682545581
+    ],
+    [
+      "snapshot-e075_seed43",
+      0.5355216181000186
+    ]
+  ],
+  "variance": {
+    "Activity": {
+      "spread_between_seeds_worst_case": 0.006315344742063522,
+      "spread_between_models": 0.015594218845390806,
+      "verdict": "real: models differ by more than seed noise"
+    },
+    "Authenticity": {
+      "spread_between_seeds_worst_case": 0.009000000000000008,
+      "spread_between_models": 0.006000000000000005,
+      "verdict": "NOISE: seed spread exceeds model spread"
+    },
+    "Conformity score": {
+      "spread_between_seeds_worst_case": 0.011763061564059929,
+      "spread_between_models": 0.022291846921796976,
+      "verdict": "marginal: seed spread is over half the model spread"
+    },
+    "Count": {
+      "spread_between_seeds_worst_case": 0.0,
+      "spread_between_models": 0.0,
+      "verdict": "no difference between models"
+    },
+    "Diversity (5)": {
+      "spread_between_seeds_worst_case": 0.005253373636645131,
+      "spread_between_models": 0.00344762386269859,
+      "verdict": "NOISE: seed spread exceeds model spread"
+    },
+    "FBD (AMPs)": {
+      "spread_between_seeds_worst_case": 0.1403580475055044,
+      "spread_between_models": 0.0738470341069073,
+      "verdict": "NOISE: seed spread exceeds model spread"
+    },
+    "FBD (generic)": {
+      "spread_between_seeds_worst_case": 0.25102879179608806,
+      "spread_between_models": 0.366866054271874,
+      "verdict": "marginal: seed spread is over half the model spread"
+    },
+    "FBD margin": {
+      "spread_between_seeds_worst_case": 0.017106101123452122,
+      "spread_between_models": 0.018834808456825614,
+      "verdict": "marginal: seed spread is over half the model spread"
+    },
+    "FKEA": {
+      "spread_between_seeds_worst_case": 17.40655517578125,
+      "spread_between_models": 7.69622802734375,
+      "verdict": "NOISE: seed spread exceeds model spread"
+    },
+    "Novelty": {
+      "spread_between_seeds_worst_case": 0.0,
+      "spread_between_models": 0.0,
+      "verdict": "no difference between models"
+    },
+    "Uniqueness": {
+      "spread_between_seeds_worst_case": 0.0,
+      "spread_between_models": 0.0,
+      "verdict": "no difference between models"
+    }
+  },
+  "note": "aggregate_score is normalised against this set of entries only. With checkpoints of one model it amplifies small differences in the unbounded metrics. Read the variance section before trusting the ranking."
+}

@@ -246,6 +246,7 @@ def train(args):
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimiser, T_max=total_steps)
 
     history = []
+    snapshots = []
     best_val = float("inf")
     step = 0
 
@@ -321,6 +322,12 @@ def train(args):
             best_val = objective
             save_checkpoint(model, data, args, os.path.join(args.out, "model.pt"))
 
+        if args.snapshot_every and epoch % args.snapshot_every == 0:
+            snapshot = os.path.join(args.out, "snapshot-e%03d.pt" % epoch)
+            save_checkpoint(model, data, args, snapshot)
+            snapshots.append(snapshot)
+            print("  snapshot -> %s" % snapshot)
+
     with open(os.path.join(args.out, "history.json"), "w", encoding="utf-8") as handle:
         json.dump(history, handle, indent=2)
 
@@ -344,6 +351,8 @@ def train(args):
     print("best validation objective %.3f, checkpoint in %s" % (best_val, args.out))
 
     fit_aggregate_posterior(os.path.join(args.out, "model.pt"), device)
+    for snapshot in snapshots:
+        fit_aggregate_posterior(snapshot, device)
 
 
 def save_checkpoint(model, data, args, path):
@@ -593,6 +602,9 @@ def main(argv=None):
                          help="use a random split instead of a cluster-aware one")
     trainer.add_argument("--device", default="cpu")
     trainer.add_argument("--seed", type=int, default=0)
+    trainer.add_argument("--snapshot-every", type=int, default=0,
+                         help="also save a checkpoint every N epochs, so one run "
+                              "yields a training curve instead of a single point")
     trainer.set_defaults(func=train)
 
     sampler = subparsers.add_parser("sample")

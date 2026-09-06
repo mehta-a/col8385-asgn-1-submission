@@ -1,0 +1,56 @@
+{
+  "values": {
+    "Count": {
+      "value": 1000.0,
+      "deviation": null
+    },
+    "Uniqueness": {
+      "value": 1.0,
+      "deviation": null
+    },
+    "Diversity (5)": {
+      "value": 0.8708717596074532,
+      "deviation": null
+    },
+    "Novelty": {
+      "value": 1.0,
+      "deviation": null
+    },
+    "FKEA": {
+      "value": 754.4039306640625,
+      "deviation": null
+    },
+    "FBD (generic)": {
+      "value": 3.179832087670615,
+      "deviation": null
+    },
+    "FBD (AMPs)": {
+      "value": 0.8091919179048261,
+      "deviation": null
+    },
+    "Activity": {
+      "value": 0.5733616294642857,
+      "deviation": 0.005616719542209156
+    },
+    "Authenticity": {
+      "value": 0.867,
+      "deviation": null
+    },
+    "Conformity score": {
+      "value": 0.47356306156405986,
+      "deviation": 0.0012762689808401726
+    }
+  },
+  "objective": {
+    "Count": "maximize",
+    "Uniqueness": "maximize",
+    "Diversity (5)": "maximize",
+    "Novelty": "maximize",
+    "FKEA": "maximize",
+    "FBD (generic)": "minimize",
+    "FBD (AMPs)": "minimize",
+    "Activity": "maximize",
+    "Authenticity": "maximize",
+    "Conformity score": "maximize"
+  }
+}

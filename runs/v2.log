@@ -1,0 +1,152 @@
+nohup: ignoring input
+loaded 42640 of 43911 records from data/training/training.fasta
+  dropped low_complexity         1090
+  dropped homopolymer_run        181
+computing self-derived properties
+  properties for 10000 sequences
+  properties for 20000 sequences
+  properties for 30000 sequences
+  properties for 40000 sequences
+hashing 42640 sequences with 64 permutations
+found 21599 clusters, 18311 singletons, largest [978, 640, 452, 411, 317]
+split: 38376 train, 4264 validation
+cached prepared dataset to runs/v2/prepared.json
+model has 5,474,389 parameters, 38376 training sequences
+epoch   1  beta 0.010  recon  45.578  kl 118.40  val recon  46.021  val acc 0.245  active 32/32  114.5s
+epoch   2  beta 0.019  recon  39.740  kl  64.61  val recon  42.196  val acc 0.313  active 32/32  108.9s
+epoch   3  beta 0.029  recon  34.566  kl  61.85  val recon  37.289  val acc 0.394  active 32/32  103.6s
+epoch   4  beta 0.038  recon  30.589  kl  60.92  val recon  34.483  val acc 0.439  active 32/32  104.4s
+epoch   5  beta 0.048  recon  28.021  kl  59.13  val recon  32.413  val acc 0.474  active 32/32  107.0s
+epoch   6  beta 0.058  recon  26.178  kl  56.77  val recon  31.444  val acc 0.489  active 32/32  104.1s
+epoch   7  beta 0.067  recon  24.885  kl  54.77  val recon  30.894  val acc 0.504  active 32/32  104.2s
+epoch   8  beta 0.077  recon  23.937  kl  52.84  val recon  30.141  val acc 0.516  active 32/32  105.2s
+epoch   9  beta 0.086  recon  23.088  kl  51.01  val recon  29.480  val acc 0.526  active 32/32  107.7s
+epoch  10  beta 0.096  recon  22.471  kl  49.59  val recon  29.160  val acc 0.532  active 32/32  104.7s
+epoch  11  beta 0.106  recon  21.955  kl  48.26  val recon  28.892  val acc 0.536  active 32/32  108.2s
+epoch  12  beta 0.115  recon  21.522  kl  46.70  val recon  28.976  val acc 0.538  active 32/32  105.6s
+epoch  13  beta 0.125  recon  21.090  kl  45.63  val recon  28.854  val acc 0.545  active 32/32  107.6s
+epoch  14  beta 0.134  recon  20.807  kl  44.62  val recon  29.024  val acc 0.544  active 32/32  106.4s
+epoch  15  beta 0.144  recon  20.496  kl  43.62  val recon  28.511  val acc 0.548  active 32/32  106.6s
+epoch  16  beta 0.150  recon  20.198  kl  42.69  val recon  28.925  val acc 0.549  active 32/32  106.0s
+epoch  17  beta 0.150  recon  19.817  kl  42.53  val recon  29.020  val acc 0.550  active 32/32  104.9s
+epoch  18  beta 0.150  recon  19.462  kl  42.56  val recon  28.917  val acc 0.550  active 32/32  104.8s
+epoch  19  beta 0.150  recon  19.002  kl  42.71  val recon  28.797  val acc 0.558  active 32/32  103.5s
+epoch  20  beta 0.150  recon  18.622  kl  42.65  val recon  28.699  val acc 0.557  active 32/32  105.3s
+epoch  21  beta 0.150  recon  18.376  kl  42.82  val recon  28.928  val acc 0.557  active 32/32  106.0s
+epoch  22  beta 0.150  recon  18.041  kl  42.82  val recon  28.535  val acc 0.559  active 32/32  105.2s
+epoch  23  beta 0.150  recon  17.703  kl  42.93  val recon  28.750  val acc 0.560  active 32/32  106.4s
+epoch  24  beta 0.150  recon  17.448  kl  43.12  val recon  29.050  val acc 0.560  active 32/32  104.8s
+epoch  25  beta 0.150  recon  17.044  kl  43.07  val recon  29.385  val acc 0.559  active 32/32  106.9s
+  snapshot -> runs/v2/snapshot-e025.pt
+epoch  26  beta 0.150  recon  16.821  kl  43.18  val recon  29.457  val acc 0.562  active 32/32  106.3s
+epoch  27  beta 0.150  recon  16.519  kl  43.31  val recon  29.194  val acc 0.564  active 32/32  106.6s
+epoch  28  beta 0.150  recon  16.303  kl  43.24  val recon  29.702  val acc 0.561  active 32/32  107.5s
+epoch  29  beta 0.150  recon  16.041  kl  43.42  val recon  29.824  val acc 0.560  active 32/32  108.5s
+epoch  30  beta 0.150  recon  15.690  kl  43.46  val recon  29.744  val acc 0.563  active 32/32  147.3s
+epoch  31  beta 0.150  recon  15.479  kl  43.52  val recon  29.233  val acc 0.566  active 32/32  116.4s
+epoch  32  beta 0.007  recon  13.888  kl  96.75  val recon  30.164  val acc 0.571  active 32/32  144.9s
+epoch  33  beta 0.017  recon  13.169  kl  81.86  val recon  30.496  val acc 0.571  active 32/32  105.9s
+epoch  34  beta 0.026  recon  12.941  kl  72.14  val recon  30.113  val acc 0.576  active 32/32  104.6s
+epoch  35  beta 0.036  recon  12.758  kl  67.34  val recon  30.607  val acc 0.570  active 32/32  106.7s
+epoch  36  beta 0.046  recon  12.611  kl  63.85  val recon  31.092  val acc 0.573  active 32/32  107.6s
+epoch  37  beta 0.055  recon  12.411  kl  61.14  val recon  31.639  val acc 0.571  active 32/32  157.0s
+epoch  38  beta 0.065  recon  12.375  kl  58.73  val recon  31.452  val acc 0.573  active 32/32  105.7s
+epoch  39  beta 0.074  recon  12.321  kl  56.88  val recon  31.228  val acc 0.573  active 32/32  107.1s
+epoch  40  beta 0.084  recon  12.233  kl  55.16  val recon  31.562  val acc 0.575  active 32/32  92.5s
+epoch  41  beta 0.094  recon  12.027  kl  53.20  val recon  32.072  val acc 0.572  active 32/32  79.6s
+epoch  42  beta 0.103  recon  12.000  kl  51.78  val recon  32.143  val acc 0.572  active 32/32  79.3s
+epoch  43  beta 0.113  recon  11.941  kl  50.71  val recon  32.024  val acc 0.575  active 32/32  79.3s
+epoch  44  beta 0.122  recon  11.951  kl  49.55  val recon  32.557  val acc 0.572  active 32/32  78.8s
+epoch  45  beta 0.132  recon  11.842  kl  48.37  val recon  31.979  val acc 0.575  active 32/32  78.7s
+epoch  46  beta 0.142  recon  11.850  kl  47.35  val recon  32.749  val acc 0.571  active 32/32  78.6s
+epoch  47  beta 0.150  recon  11.863  kl  46.49  val recon  32.614  val acc 0.575  active 32/32  78.8s
+epoch  48  beta 0.150  recon  11.817  kl  45.83  val recon  32.356  val acc 0.575  active 32/32  79.2s
+epoch  49  beta 0.150  recon  11.668  kl  45.95  val recon  32.312  val acc 0.577  active 32/32  78.7s
+epoch  50  beta 0.150  recon  11.494  kl  45.65  val recon  32.686  val acc 0.574  active 32/32  78.9s
+  snapshot -> runs/v2/snapshot-e050.pt
+epoch  51  beta 0.150  recon  11.361  kl  45.73  val recon  33.322  val acc 0.573  active 32/32  78.1s
+epoch  52  beta 0.150  recon  11.218  kl  45.69  val recon  32.857  val acc 0.573  active 32/32  78.6s
+epoch  53  beta 0.150  recon  11.059  kl  45.58  val recon  33.350  val acc 0.573  active 32/32  77.6s
+epoch  54  beta 0.150  recon  10.951  kl  45.70  val recon  33.054  val acc 0.575  active 32/32  78.3s
+epoch  55  beta 0.150  recon  10.763  kl  45.62  val recon  33.548  val acc 0.574  active 32/32  78.5s
+epoch  56  beta 0.150  recon  10.670  kl  45.54  val recon  33.406  val acc 0.575  active 32/32  79.7s
+epoch  57  beta 0.150  recon  10.559  kl  45.48  val recon  33.532  val acc 0.576  active 32/32  78.7s
+epoch  58  beta 0.150  recon  10.363  kl  45.59  val recon  33.700  val acc 0.576  active 32/32  78.8s
+epoch  59  beta 0.150  recon  10.280  kl  45.67  val recon  33.655  val acc 0.577  active 32/32  79.2s
+epoch  60  beta 0.150  recon  10.085  kl  45.58  val recon  34.267  val acc 0.577  active 32/32  78.4s
+epoch  61  beta 0.150  recon  10.034  kl  45.58  val recon  34.512  val acc 0.576  active 32/32  78.7s
+epoch  62  beta 0.150  recon   9.839  kl  45.46  val recon  34.748  val acc 0.575  active 32/32  78.7s
+epoch  63  beta 0.005  recon   8.876  kl  73.75  val recon  35.155  val acc 0.581  active 32/32  78.4s
+epoch  64  beta 0.014  recon   7.917  kl  85.12  val recon  35.549  val acc 0.581  active 32/32  79.0s
+epoch  65  beta 0.024  recon   7.874  kl  72.22  val recon  36.411  val acc 0.578  active 32/32  78.5s
+epoch  66  beta 0.034  recon   7.806  kl  67.01  val recon  36.606  val acc 0.584  active 32/32  79.6s
+epoch  67  beta 0.043  recon   7.722  kl  63.55  val recon  37.057  val acc 0.581  active 32/32  79.4s
+epoch  68  beta 0.053  recon   7.717  kl  60.73  val recon  36.876  val acc 0.581  active 32/32  79.0s
+epoch  69  beta 0.062  recon   7.706  kl  58.48  val recon  37.217  val acc 0.581  active 32/32  79.3s
+epoch  70  beta 0.072  recon   7.694  kl  56.66  val recon  37.587  val acc 0.580  active 32/32  79.5s
+epoch  71  beta 0.082  recon   7.662  kl  55.14  val recon  38.129  val acc 0.582  active 32/32  79.2s
+epoch  72  beta 0.091  recon   7.711  kl  53.70  val recon  38.204  val acc 0.581  active 32/32  79.7s
+epoch  73  beta 0.101  recon   7.704  kl  52.19  val recon  37.966  val acc 0.581  active 32/32  78.9s
+epoch  74  beta 0.110  recon   7.693  kl  51.04  val recon  38.109  val acc 0.582  active 32/32  79.2s
+epoch  75  beta 0.120  recon   7.692  kl  49.91  val recon  37.814  val acc 0.580  active 32/32  79.2s
+  snapshot -> runs/v2/snapshot-e075.pt
+epoch  76  beta 0.130  recon   7.753  kl  48.91  val recon  38.120  val acc 0.582  active 32/32  80.0s
+epoch  77  beta 0.139  recon   7.738  kl  47.95  val recon  38.546  val acc 0.581  active 32/32  78.9s
+epoch  78  beta 0.149  recon   7.763  kl  47.09  val recon  38.294  val acc 0.580  active 32/32  79.3s
+epoch  79  beta 0.150  recon   7.763  kl  46.54  val recon  38.298  val acc 0.580  active 32/32  79.1s
+epoch  80  beta 0.150  recon   7.704  kl  46.45  val recon  38.521  val acc 0.581  active 32/32  79.1s
+epoch  81  beta 0.150  recon   7.623  kl  46.34  val recon  38.430  val acc 0.580  active 32/32  78.9s
+epoch  82  beta 0.150  recon   7.530  kl  46.24  val recon  38.659  val acc 0.580  active 32/32  79.1s
+epoch  83  beta 0.150  recon   7.440  kl  46.05  val recon  38.482  val acc 0.579  active 32/32  79.6s
+epoch  84  beta 0.150  recon   7.386  kl  46.01  val recon  38.711  val acc 0.580  active 32/32  79.5s
+epoch  85  beta 0.150  recon   7.301  kl  45.98  val recon  38.511  val acc 0.581  active 32/32  79.1s
+epoch  86  beta 0.150  recon   7.248  kl  45.96  val recon  39.047  val acc 0.580  active 32/32  79.1s
+epoch  87  beta 0.150  recon   7.141  kl  45.84  val recon  38.778  val acc 0.581  active 32/32  79.4s
+epoch  88  beta 0.150  recon   7.088  kl  45.86  val recon  38.878  val acc 0.582  active 32/32  79.4s
+epoch  89  beta 0.150  recon   7.003  kl  45.90  val recon  39.304  val acc 0.581  active 32/32  78.3s
+epoch  90  beta 0.150  recon   6.961  kl  45.75  val recon  39.166  val acc 0.583  active 32/32  79.6s
+epoch  91  beta 0.150  recon   6.883  kl  45.67  val recon  39.610  val acc 0.581  active 32/32  78.9s
+epoch  92  beta 0.150  recon   6.835  kl  45.72  val recon  39.543  val acc 0.581  active 32/32  78.5s
+epoch  93  beta 0.150  recon   6.790  kl  45.65  val recon  39.292  val acc 0.582  active 32/32  78.6s
+epoch  94  beta 0.002  recon   6.402  kl  51.78  val recon  39.886  val acc 0.583  active 32/32  78.7s
+epoch  95  beta 0.012  recon   5.020  kl  86.88  val recon  40.685  val acc 0.584  active 32/32  78.8s
+epoch  96  beta 0.022  recon   5.056  kl  72.29  val recon  40.944  val acc 0.584  active 32/32  79.0s
+epoch  97  beta 0.031  recon   5.104  kl  65.54  val recon  41.223  val acc 0.585  active 32/32  79.0s
+epoch  98  beta 0.041  recon   5.136  kl  61.92  val recon  40.798  val acc 0.586  active 32/32  79.3s
+epoch  99  beta 0.050  recon   5.169  kl  59.26  val recon  41.191  val acc 0.585  active 32/32  79.3s
+epoch 100  beta 0.060  recon   5.212  kl  56.98  val recon  41.406  val acc 0.586  active 32/32  80.2s
+  snapshot -> runs/v2/snapshot-e100.pt
+epoch 101  beta 0.070  recon   5.290  kl  55.22  val recon  41.499  val acc 0.585  active 32/32  78.9s
+epoch 102  beta 0.079  recon   5.340  kl  53.68  val recon  41.165  val acc 0.586  active 32/32  78.8s
+epoch 103  beta 0.089  recon   5.369  kl  52.36  val recon  41.507  val acc 0.585  active 32/32  79.9s
+epoch 104  beta 0.098  recon   5.444  kl  51.18  val recon  41.495  val acc 0.585  active 32/32  79.4s
+epoch 105  beta 0.108  recon   5.512  kl  50.01  val recon  41.755  val acc 0.585  active 32/32  79.7s
+epoch 106  beta 0.118  recon   5.587  kl  49.16  val recon  41.611  val acc 0.584  active 32/32  79.1s
+epoch 107  beta 0.127  recon   5.666  kl  48.25  val recon  41.802  val acc 0.584  active 32/32  78.9s
+epoch 108  beta 0.137  recon   5.724  kl  47.42  val recon  41.691  val acc 0.584  active 32/32  78.2s
+epoch 109  beta 0.146  recon   5.795  kl  46.77  val recon  41.887  val acc 0.584  active 32/32  78.3s
+epoch 110  beta 0.150  recon   5.842  kl  46.11  val recon  41.749  val acc 0.584  active 32/32  79.0s
+epoch 111  beta 0.150  recon   5.835  kl  46.00  val recon  41.872  val acc 0.584  active 32/32  79.5s
+epoch 112  beta 0.150  recon   5.800  kl  45.96  val recon  41.805  val acc 0.585  active 32/32  79.8s
+epoch 113  beta 0.150  recon   5.803  kl  45.86  val recon  41.707  val acc 0.584  active 32/32  79.0s
+epoch 114  beta 0.150  recon   5.786  kl  45.82  val recon  41.778  val acc 0.584  active 32/32  80.0s
+epoch 115  beta 0.150  recon   5.766  kl  45.82  val recon  41.853  val acc 0.584  active 32/32  78.7s
+epoch 116  beta 0.150  recon   5.746  kl  45.73  val recon  41.758  val acc 0.584  active 32/32  78.5s
+epoch 117  beta 0.150  recon   5.748  kl  45.74  val recon  41.855  val acc 0.584  active 32/32  78.8s
+epoch 118  beta 0.150  recon   5.733  kl  45.79  val recon  41.858  val acc 0.584  active 32/32  79.3s
+epoch 119  beta 0.150  recon   5.742  kl  45.69  val recon  41.784  val acc 0.584  active 32/32  79.1s
+epoch 120  beta 0.150  recon   5.731  kl  45.76  val recon  41.789  val acc 0.584  active 32/32  78.9s
+epoch 121  beta 0.150  recon   5.727  kl  45.75  val recon  41.782  val acc 0.584  active 32/32  78.9s
+epoch 122  beta 0.150  recon   5.701  kl  45.67  val recon  41.828  val acc 0.584  active 32/32  79.5s
+epoch 123  beta 0.150  recon   5.707  kl  45.67  val recon  41.801  val acc 0.584  active 32/32  79.4s
+epoch 124  beta 0.150  recon   5.709  kl  45.68  val recon  41.794  val acc 0.584  active 32/32  79.6s
+epoch 125  beta 0.150  recon   5.702  kl  45.68  val recon  41.797  val acc 0.584  active 32/32  79.3s
+  snapshot -> runs/v2/snapshot-e125.pt
+wrote metadata stub to runs/v2/model.json
+best validation objective 71.460, checkpoint in runs/v2
+fitted aggregate posterior over 20000 sequences
+fitted aggregate posterior over 20000 sequences
+fitted aggregate posterior over 20000 sequences
+fitted aggregate posterior over 20000 sequences
+fitted aggregate posterior over 20000 sequences
+fitted aggregate posterior over 20000 sequences

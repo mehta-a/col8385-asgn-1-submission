@@ -1,6 +1,6 @@
 {
   "model": "conditional-peptide-vae",
-  "weights": "runs/v1/model.pt",
+  "weights": "checkpoint/model.pt",
   "config": {
     "dim": 256,
     "latent": 32,
@@ -8,17 +8,16 @@
     "max_len": 50
   },
   "training_sequences": 38376,
-  "best_val_objective": 62.2655,
+  "best_val_objective": 52.4442,
   "final_epoch": {
-    "epoch": 10,
-    "beta": 0.15,
-    "train_recon": 27.66,
-    "train_kl": 29.024,
-    "val_recon": 35.528,
-    "val_kl": 29.403,
-    "val_accuracy": 0.4291,
-    "active_units": 28,
-    "kl_top_dim": 1.4291,
-    "seconds": 110.0
+    "epoch": 120,
+    "beta": 0.5,
+    "train_recon": 12.917,
+    "train_kl": 21.967,
+    "val_recon": 41.707,
+    "val_kl": 24.127,
+    "val_accuracy": 0.5035,
+    "active_units": 32,
+    "seconds": 113.7
   }
 }

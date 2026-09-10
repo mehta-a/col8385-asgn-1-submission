@@ -259,3 +259,9 @@ axis that needs fixing.
   distribution; it does not push toward better peptides than the ones it was shown. That
   would need a reward-driven method (a GFlowNet, or latent-space optimisation against a
   learned activity proxy) on top of this.
+
+---
+
+### References
+- Claude, Gemini
+
